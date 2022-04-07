@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/bootstrap5/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <title><%=title%> - Login</title>
+</head>
+<body>
+    <input type="hidden" id="page" value="login">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap my-5 p-5 card-login">
+                        <div class="d-flex justify-content-between">
+                            <img src="images/logo-acx.png" alt="Logo acx" class="logo-acx" width="150px">
+                            <i class="fa fa-bars p-color"></i>
+                        </div>
+                        <div class="text-center mb-3 div-icon-user">
+                            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="100px" class="rounded mb-2" alt="User icon">
+                            <p class="p-color"><b>Acesso ao sistema</b></p>
+                        </div>
+                        <form action="/login" method="post" class="login-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control r50 acesso" name="username" placeholder="Usuário" id="_login">
+                                <span class="iconspan"><i class="fa fa-user"></i></span>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" name="senha" class="form-control r50 acesso" placeholder="Senha" id="_senha">
+                                <span class="iconspan"><i class="fa fa-lock"></i></span>
+                            </div>
+                            
+                            <div class="form-group col-6 mx-auto">
+                                <button id="btnLogin" type="submit" class="btn form-control btn-primary submit px-3 r50">Login</button>
+                            </div>
+                        </form>
+                        <div class="w-100 text-center mt-4 text">
+                            <p class="mb-0">Esqueceu sua senha ?</p>
+                            <!-- <a href="#">Cadastre-se</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <script src="/libs/jquery/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/libs/bootstrap5/dist/js/bootstrap.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,77 @@
+{
+    "headerTab": {
+        "componentePai": {
+            "atributos":{},
+            "tag": "nav"
+        },
+        "componenteFilho":{
+            "tag": "div",
+            "atributos": {
+                "id" : "nav-tab",
+                "class": "nav nav-tabs",
+                "role": "tablist"
+            },
+            "listaHeaderTab":[
+                {
+                    "tag": "button",
+                    "titulo": "Tab 1",
+                    "atributos": {
+                        "class":"nav-link active" ,
+                        "id":"nav-home-tab" ,
+                        "data-bs-toggle":"tab" ,
+                        "data-bs-target":"#nav-home" ,
+                        "type":"button" ,
+                        "role":"tab" ,
+                        "aria-controls":"nav-home" ,
+                        "aria-selected":"false"
+                    }
+                },
+                {
+                    "tag": "button",
+                    "titulo": "Tab 2",
+                    "atributos": {
+                        "class":"nav-link active" ,
+                        "id":"nav-profile-tab" ,
+                        "data-bs-toggle":"tab" ,
+                        "data-bs-target":"#nav-profile" ,
+                        "type":"button" ,
+                        "role":"tab" ,
+                        "aria-controls":"nav-profile" ,
+                        "aria-selected":"false"
+                    }
+                },
+                {
+                    "tag": "button",
+                    "titulo": "Tab 1",
+                    "atributos": {
+                        "class":"nav-link active" ,
+                        "id":"nav-contact-tab" ,
+                        "data-bs-toggle":"tab" ,
+                        "data-bs-target":"#nav-contact" ,
+                        "type":"button" ,
+                        "role":"tab" ,
+                        "aria-controls":"nav-contact" ,
+                        "aria-selected":"false"
+                    }
+                }
+            ]
+        }
+    },
+
+    "bodyTab": {
+        "componentePai": {
+            "atributos":{},
+            "tag": "div"
+        },
+        "componenteFilho":{
+            "tag": "div",
+            "atributos": {
+                "class": "tab-content",
+                "id": "nav-tabContent"
+            },
+            "listaBodyTab":[
+
+            ]
+        }
+    }
+}

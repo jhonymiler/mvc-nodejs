@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1><%= title %> </h1>
+    <div class="page-data">
+        <div class="data-btn">
+            <a href="/orgs/add">Add Organisation</a>
+        </div>
+        <div class="data-table">
+            <table class="center">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+
+                <% if(data.length){
+for(var i = 0;i < data.length;i++) { %>
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].name%></td>
+                    <td>
+                        <a class="a-inside edit" href="/orgs/<%=data[i].id%>">View</a>
+                        <a class="a-inside edit" href="/orgs/<%=data[i].id%>/edit">Edit</a>
+                        <a class="a-inside delete" href="../orgs/<%=data[i].id%>/delete">Delete</a>
+                    </td>
+                </tr>
+                <% }
+}else{ %>
+                <tr>
+                    <td colspan="6">No user</td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
