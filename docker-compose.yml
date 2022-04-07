@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  # PostgreSQL container
+  postgres:
+    image: postgres:$POSTGRES_TAG
+    container_name: '${PROJECT_NAME}_postgres'
+    restart: always
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+
+  # Node server container
+  node:
+    image: node:$NODE_TAG
+    user: "node"
+    container_name: '${PROJECT_NAME}_node'
+    working_dir: /home/node/app
+    environment:
+      DATABASE_URL: $DATABASE_URL
+      NODE_ENV: $NODE_ENV
+      DEBUG: $DEBUG
+      PORT: $PORT
+    volumes:
+      - .:/home/node/app
+    ports:
+      - $PORT:$PORT
+    expose:
+      - "8081"
+    command: node app.js
+    depends_on:
+      - postgres

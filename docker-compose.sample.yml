@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+
+  # PostgreSQL container
+  postgres:
+    image: postgres:$POSTGRES_TAG
+    container_name: '${PROJECT_NAME}_postgres'
+    restart: always
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+
+  # Adminer admin interface for postgres
+  adminer:
+    image: adminer:$ADMINER_TAG
+    container_name: '${PROJECT_NAME}_adminer'
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: $ADMINER_DEFAULT_SERVER
+    ports:
+      - $ADMINER_PORT:8080
+    depends_on:
+      - postgres
+  
+  # Node server container
+  node:
+    image: node:$NODE_TAG
+    container_name: '${PROJECT_NAME}_node'
+    working_dir: /root/app
+    environment:
+      DATABASE_URL: $DATABASE_URL
+      NODE_ENV: $NODE_ENV
+      DEBUG: $DEBUG
+      PORT: $PORT
+    volumes:
+      - ./:/root/app:delegated
+    ports:
+      - $PORT:$PORT
+    command: node_modules/.bin/nodemon app
+    depends_on:
+      - postgres
