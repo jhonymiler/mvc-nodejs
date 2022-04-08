@@ -1,11 +1,16 @@
 const axios = require( 'axios' ).default;
 
-exports.Auth = async ( username, senha ) => {
+exports.Auth = async ( login, pass ) => {
+    try {
+        const resposta = await axios.post( 'teste.php', {
+            username: login,
+            senha: pass
+        } );
 
-    resultado = await axios.post( '/login/', {
-        'username': username,
-        'senha': senha
-    }, );
+        axios.defaults.headers.common[ 'Authorization' ] = AUTH_TOKEN;
 
-    console.log( resultado )
+        return resposta.data;
+    } catch ( error ) {
+        console.log( error );
+    }
 }

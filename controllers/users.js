@@ -6,7 +6,7 @@ exports.Login = ( req, res ) => {
         title: "Login",
         data: usersModel.Auth( req.body.username, req.body.senha ),
     };
-    res.json( context );
+    res.render( "teste/view", context );
 };
 
 exports.view = async ( req, res ) => {

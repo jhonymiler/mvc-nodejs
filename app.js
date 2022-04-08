@@ -1,32 +1,38 @@
 const express = require( 'express' )
 const bodyParser = require( 'body-parser' )
 const path = require( 'path' )
-const axios = require( 'axios' ).default
+const cors = require( 'cors' )
 require( 'dotenv/config' );
+const axios = require( "axios" ).default;
 // const dbConfig = require('./db/dbconf');
 
-var app = express()
-//define a url padrão para axios
+
+// Configura parametros padrões do AXIOS
 axios.defaults.baseURL = process.env.API_URL;
 axios.defaults.headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     "Access-Control-Allow-Origin": "*"
-}
+};
+axios.defaults.headers.post = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+};
 
 // Set EJS engine como default para usar templates html
+var app = express()
 app.set( 'view engine', 'ejs' )
 
 // Usa o body-parser para middleware
+app.use( cors() )
 app.use( bodyParser.json() )
 app.use( bodyParser.urlencoded( {
     extended: true
 } ) )
-app.use( express.static( path.join( __dirname, 'public' ) ) )
-
 
 // Grupo de Rotas iniciais do Express
+app.use( express.static( path.join( __dirname, 'public' ) ) )
 app.use( '/', require( './routes/index.route.js' ) )
 app.use( '/user', require( './routes/user.route.js' ) )
+
 
 // Set a port for the app to listen on
 const PORT = process.env.PORT || 5005;
