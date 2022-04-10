@@ -17,7 +17,6 @@ exports.Login = async ( req, res ) => {
         axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
 
         req.session.user = dados.data;
-        res.locals.user = dados.data;
         const context = {
             title: "Login",
             data: dados.data,
@@ -33,3 +32,11 @@ exports.Logout = ( req, res ) => {
     req.session.destroy();
     res.redirect( '/login' );
 };
+
+exports.Lista = async ( req, res ) => {
+    const dados = {
+        title: "Lista de Usuários",
+        data: await usersModel.Lista()
+    }
+    res.render( 'teste/list', dados );
+}

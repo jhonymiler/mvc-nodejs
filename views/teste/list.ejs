@@ -10,31 +10,29 @@
 <body>
     <h1><%= title %> </h1>
     <div class="page-data">
-        <div class="data-btn">
-            <a href="/orgs/add">Add Organisation</a>
-        </div>
         <div class="data-table">
             <table class="center">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Nome</th>
                 </tr>
 
-                <% if(data.length){
+                <% 
+                if(data.length){
 for(var i = 0;i < data.length;i++) { %>
                 <tr>
                     <td><%=data[i].id%></td>
                     <td><%=data[i].name%></td>
                     <td>
-                        <a class="a-inside edit" href="/orgs/<%=data[i].id%>">View</a>
-                        <a class="a-inside edit" href="/orgs/<%=data[i].id%>/edit">Edit</a>
-                        <a class="a-inside delete" href="../orgs/<%=data[i].id%>/delete">Delete</a>
+                        <a class="a-inside edit" href="/user/view/<%=data[i].id%>">Ver</a>
+                        <a class="a-inside edit" href="/user/edit/<%=data[i].id%>/edit">Editar</a>
+                        <a class="a-inside delete" href="/user/delete/<%=data[i].id%>/delete">Deletar</a>
                     </td>
                 </tr>
                 <% }
 }else{ %>
                 <tr>
-                    <td colspan="6">No user</td>
+                    <td colspan="6">Nenhum usuário</td>
                 </tr>
                 <% } %>
             </table>
