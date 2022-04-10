@@ -1,16 +1,33 @@
+const {
+    default: axios
+} = require( 'axios' );
 const usersModel = require( '../model/users' );
 
-
+/**
+ * Requisição Express
+ * Realiza o login do usuário criando a sessão e adicionando o parâmetro Authorization no header do axios
+ * @param {*} req 
+ * @param {*} res 
+ * 
+ */
 exports.Login = async ( req, res ) => {
 
     const dados = await usersModel.Auth( req.body.username, req.body.senha );
-    const context = {
-        title: "Login",
-        data: dados.data,
-    };
-    res.render( "teste/view", context );
+    if ( dados.data.token.length > 0 ) {
+
+        axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
+
+        const context = {
+            title: "Login",
+            data: dados.data,
+        };
+        res.render( "teste/view", context );
+    } else {
+        res.redirect( '/login' );
+    }
 
 };
+
 
 exports.view = ( req, res ) => {
     const context = {
@@ -18,23 +35,3 @@ exports.view = ( req, res ) => {
     };
     res.render( "index", context );
 };
-
-
-// exports.list = async ( req, res ) => {
-//     const data = await usersModel.list();
-
-//     const context = {
-//         title: "Users",
-//         data: data,
-//     };
-//     res.render( "users/list", context );
-// };
-
-// exports.view = async ( req, res ) => {
-//     const data = await usersModel.view( req.params.id );
-//     const context = {
-//         title: "Users",
-//         data: data,
-//     };
-//     res.render( "users/view", context );
-// };
