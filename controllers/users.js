@@ -1,15 +1,18 @@
 const usersModel = require( '../model/users' );
 
 
-exports.Login = ( req, res ) => {
+exports.Login = async ( req, res ) => {
+
+    const dados = await usersModel.Auth( req.body.username, req.body.senha );
     const context = {
         title: "Login",
-        data: usersModel.Auth( req.body.username, req.body.senha ),
+        data: dados.data,
     };
     res.render( "teste/view", context );
+
 };
 
-exports.view = async ( req, res ) => {
+exports.view = ( req, res ) => {
     const context = {
         title: "Fazer Login",
     };

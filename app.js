@@ -4,18 +4,18 @@ const path = require( 'path' )
 const cors = require( 'cors' )
 require( 'dotenv/config' );
 const axios = require( "axios" ).default;
-// const dbConfig = require('./db/dbconf');
 
 
 // Configura parametros padrões do AXIOS
 axios.defaults.baseURL = process.env.API_URL;
 axios.defaults.headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    "Access-Control-Allow-Origin": "*"
-};
-axios.defaults.headers.post = {
+    "Access-Control-Allow-Origin": "*",
     'Content-Type': 'application/x-www-form-urlencoded'
 };
+// axios.defaults.headers.post = {
+//     'Content-Type': 'application/x-www-form-urlencoded'
+// };
 
 // Set EJS engine como default para usar templates html
 var app = express()
