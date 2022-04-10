@@ -15,21 +15,21 @@ exports.Login = async ( req, res ) => {
     const dados = await usersModel.Auth( req.body.username, req.body.senha );
     if ( dados.data.token.length > 0 ) {
         axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
+
+        req.session.user = dados.data;
+        res.locals.user = dados.data;
         const context = {
             title: "Login",
             data: dados.data,
         };
-        res.render( "teste/view", context );
+        res.redirect( "/" );
     } else {
         res.redirect( '/login' );
     }
 
 };
 
-
-exports.view = ( req, res ) => {
-    const context = {
-        title: "Fazer Login",
-    };
-    res.render( "index", context );
+exports.Logout = ( req, res ) => {
+    req.session.destroy();
+    res.redirect( '/login' );
 };
