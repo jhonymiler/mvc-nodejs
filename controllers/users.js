@@ -14,9 +14,7 @@ exports.Login = async ( req, res ) => {
 
     const dados = await usersModel.Auth( req.body.username, req.body.senha );
     if ( dados.data.token.length > 0 ) {
-
         axios.defaults.headers.Authorization = 'Bearer ' + dados.data.token;
-
         const context = {
             title: "Login",
             data: dados.data,
