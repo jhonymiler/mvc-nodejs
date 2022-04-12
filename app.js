@@ -40,9 +40,6 @@ app.use( '/', require( './routes/index.route.js' ) )
 app.use( '/user', require( './routes/user.route.js' ) )
 
 
-
-
-
 // Set a port for the app to listen on
 const PORT = process.env.PORT || 5005;
 

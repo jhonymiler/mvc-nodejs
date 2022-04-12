@@ -1,6 +1,6 @@
 {
   "name": "acx-erp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sistema de Gestão ERP - ACX",
   "main": "app.js",
   "type": "commonjs",
