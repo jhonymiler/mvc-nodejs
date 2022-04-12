@@ -6,8 +6,6 @@ const usersModel = require( '../model/users' );
 /**
  * Requisição Express
  * Realiza o login do usuário criando a sessão e adicionando o parâmetro Authorization no header do axios
- * @param {*} req 
- * @param {*} res 
  * 
  */
 exports.Login = async ( req, res ) => {
